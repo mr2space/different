@@ -48,6 +48,7 @@ def interface(request):
         print("lawyer not found")
     #ccb_id:int, court_type:str, lawyer_id:int, fir_list:list
     engine2_thread = threading.Thread(target=receiver, args=(
+        request = None,
         ccb_id = ccb_obj,
         court_type = ccb_obj.court_type,
         lawyer_id = request.GET.get("lawyer_id"),

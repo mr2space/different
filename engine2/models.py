@@ -5,19 +5,13 @@ from lawyerhandle.models import Laywers
 
 class Assigened(models.Model):
     pre_id = models.AutoField(primary_key=True)
-    ccb_id = models.OneToOneField(CCB, on_delete=models.CASCADE)
-    ccb_id = models.CharField(max_length=150)
+    ccb = models.OneToOneField(CCB, on_delete=models.CASCADE)  # Changed field name to 'ccb'
     priority = models.IntegerField()
-    judge_id = models.ForeignKey(Judges, on_delete=models.CASCADE)
-    lawyer_id = models.ForeignKey(Laywers, on_delete=models.CASCADE)
+    judge = models.ForeignKey(Judges, on_delete=models.CASCADE)  # Changed field name to 'judge'
+    lawyer = models.ForeignKey(Laywers, on_delete=models.CASCADE)  # Changed field name to 'lawyer'
     
     def __str__(self) -> str:
-        return f"{self.ccb_id}"   
-
-
-
-
-
+        return f"{self.ccb}"   
 
 class Priority(models.Model):
     fir_id = models.AutoField(primary_key=True)
@@ -29,4 +23,3 @@ class Priority(models.Model):
     
     def __str__(self) -> str:
         return f"{self.fir_number}"
-
